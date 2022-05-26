@@ -3,7 +3,7 @@
     <div class="column col-3 q-mx-auto q-mt-lg">
       <span class="text-center text-subtitle2 q-my-sm">
         Count Hola
-        <p>{{ $t("message.hello") }}</p>
+        <p>Hola</p>
         <p>{{ parkingStore.parking }}</p>
         <p>Doble: {{ parkingStore.doubleParking }}</p>
         :

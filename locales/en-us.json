@@ -1,5 +1,26 @@
 {
   "message": {
-    "hello": "hello world one"
+    "layout": {
+      "parking": "Parking",
+      "administrator": "Administrator",
+      "home": "Home",
+      "registerVehicleEntry": "Register Vehicle Entry",
+      "registerVehicleExit": "Register Vehicle Exit"
+    },
+    "general": {
+      "reset": "Reset"
+    },
+    "entry": {
+      "location": "Location: *",
+      "licensePlate": "License Plate: *",
+      "cylinderCapacity": "Cylinder Capacity: *",
+      "vehicleType": "Vehicle Type: *",
+      "register": "Register"
+    },
+    "exit": {
+      "byLocation": "Search by location:",
+      "byLicensePlate": "Search by license Plate:",
+      "search": "Search"
+    }
   }
 }

@@ -1,7 +1,7 @@
 {
-  "name": "vitest-example",
+  "name": "parking",
   "version": "1.0.0",
-  "description": "examples of tests",
+  "description": "ADN Ceiba - Parking application to manage a parking lot",
   "main": "index.js",
   "license": "UNLICENSED",
   "private": true,
@@ -43,6 +43,7 @@
     "@typescript-eslint/parser": "^5.12.1",
     "@vitejs/plugin-legacy": "^1.7.1",
     "@vitejs/plugin-vue": "^2.2.2",
+    "@vitest/ui": "^0.12.9",
     "@vue/test-utils": "^2.0.0-rc.17",
     "eslint": "^8.10.0",
     "eslint-config-google": "^0.14.0",

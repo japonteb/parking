@@ -1,5 +1,19 @@
 {
   "message": {
-    "hello": "Olá Mundo"
+    "layout": {
+      "parking": "Estacionamento",
+      "administrator": "Administrador",
+      "home": "Inicio",
+      "registerVehicleEntry": "Registre a entrada do veículo",
+      "registerVehicleExit": "Registre a saída do veículo"
+    },
+    "entry": {
+      "location": "Localização: *",
+      "licensePlate": "Placa: *",
+      "cylinderCapacity": "Cilindrada: *",
+      "vehicleType": "Tipo de veículo: *",
+      "register": "Registrar",
+      "reset": "Limpar"
+    }
   }
 }
