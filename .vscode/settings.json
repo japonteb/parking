@@ -1,6 +1,5 @@
 {
-  "i18n-ally.localesPaths": [
-    "locales",
-    "src/styles/locales"
-  ]
+  "i18n-ally.localesPaths": ["locales", "src/styles/locales"],
+  "i18n-ally.sourceLanguage": "en-us",
+  "i18n-ally.keystyle": "nested"
 }

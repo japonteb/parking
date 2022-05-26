@@ -10,6 +10,10 @@
     "general": {
       "reset": "Reset"
     },
+    "index": {
+      "title": "Welcome to Parking App!",
+      "subtitle": "Select a parking space"
+    },
     "entry": {
       "location": "Location: *",
       "licensePlate": "License Plate: *",
@@ -22,5 +26,6 @@
       "byLicensePlate": "Search by license Plate:",
       "search": "Search"
     }
-  }
+  },
+  "select-a-parking-space": "Select a parking space"
 }

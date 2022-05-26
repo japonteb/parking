@@ -1,4 +1,4 @@
-import { kyBase } from './api-base';
+import { kyBase } from "../api-base";
 
 interface Gender {
   value: string;
@@ -36,4 +36,5 @@ export interface ParkResult {
   busy_level: string;
 }
 
-export const getPark = (): Promise<ParkResult> => kyBase('v2_core/getPark.php').json();
+export const getPark = (): Promise<ParkResult> =>
+  kyBase("v2_core/getPark.php").json();
