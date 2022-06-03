@@ -35,9 +35,9 @@ let invoice = ref<Invoice>({
   open: true,
 });
 
-const setInvoiceAndCalculateParkingPrice = (invoiceResult: Invoice) => {
+const setInvoiceAndCalculateParkingPrice = async (invoiceResult: Invoice) => {
   invoice.value = invoiceResult;
-  invoice.value = calculateParkingPrice(invoice.value);
+  invoice.value = await calculateParkingPrice(invoice.value);
   showChargeSection.value = true;
 };
 </script>

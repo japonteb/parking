@@ -1,5 +1,5 @@
 import { ParkingSpace } from "./parking-service";
-import { kyBase } from "./api-base";
+import { kyBase, kyBaseBusiness } from "./api-base";
 
 // Types //
 
@@ -14,6 +14,7 @@ export interface Invoice {
   open: boolean;
 }
 
+const parkingURL = "parking";
 const invoiceURL = "invoice";
 
 export const registerInvoiceVehicleEntry = (invoice: Invoice): Invoice => {
@@ -35,9 +36,21 @@ export const registerVehicleExitFromParkingSpace = (
     .json();
 };
 
-export const calculateParkingPrice = (invoice: Invoice): Invoice => {
+export const calculateParkingPrice = async (
+  invoice: Invoice
+): Promise<Invoice> => {
   invoice.exitDatetime = new Date();
-  invoice.price = 500;
+  const price: number = await kyBaseBusiness
+    .post(`${parkingURL}/calculate-price`, {
+      json: {
+        vehicleType: invoice.parkingSpace.type,
+        cylinderCapacity: invoice.cylinderCapacity,
+        entry: invoice.entryDatetime,
+        exit: invoice.exitDatetime,
+      },
+    })
+    .json();
+  invoice.price = price ?? 0;
   return invoice;
 };
 

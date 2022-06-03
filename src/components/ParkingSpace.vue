@@ -23,7 +23,6 @@
                   name: 'exit',
                   params: {
                     location: space.location,
-                    type: space.type,
                   },
                 }
           "

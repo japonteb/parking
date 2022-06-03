@@ -95,6 +95,7 @@ import {
 import {
   changeParkingState,
   getParkingSpaceByLocationService,
+  isVehicleInTrafficRestriction,
   ParkingSpace,
 } from "../../services/parking-service";
 
@@ -128,6 +129,21 @@ const optionsVehicleType: { label: string; value: string }[] = [
 
 const $q = useQuasar();
 async function onSubmit() {
+  let isTrafficRestiction: boolean = await isVehicleInTrafficRestriction(
+    licensePlate.value
+  );
+
+  if (isTrafficRestiction) {
+    $q.notify({
+      color: "red-5",
+      textColor: "white",
+      icon: "warning",
+      message:
+        "The entry of the vehicle cannot be registered because it is in traffic restriction",
+    });
+    return;
+  }
+
   let parkingSpaceResult: ParkingSpace[] =
     await getParkingSpaceByLocationService(location.value);
 

@@ -1,4 +1,4 @@
-import { kyBase } from "./api-base";
+import { kyBase, kyBaseBusiness } from "./api-base";
 
 // Types //
 
@@ -28,6 +28,16 @@ export const changeParkingState = (
   return kyBase
     .patch(`${parkingURL}/${parkingSpaceId}`, {
       json: { state },
+    })
+    .json();
+};
+export const isVehicleInTrafficRestriction = (
+  licensePlate: string
+): Promise<boolean> => {
+  const entryDateTime: Date = new Date();
+  return kyBaseBusiness
+    .post(`${parkingURL}/traffic-restriction`, {
+      json: { licensePlate, date: entryDateTime.toUTCString },
     })
     .json();
 };
