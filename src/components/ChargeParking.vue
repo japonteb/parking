@@ -21,7 +21,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useQuasar } from "quasar";
 import { date } from "quasar";
 import {
   registerVehicleExitFromParkingSpace,
@@ -30,6 +29,8 @@ import {
 import { changeParkingState } from "../../services/parking-service";
 import { ParkingSpaceState } from "~/models/parkingSpaceState.enum";
 import { computed } from "vue";
+import useMessages from "~/composables/useMessages";
+import { useI18n } from "vue-i18n";
 
 const props = defineProps<{
   invoice: Invoice;
@@ -50,8 +51,8 @@ const formattedExitDatetime = computed(() => {
   return "";
 });
 
-const $q = useQuasar();
-
+const messages = useMessages();
+const { t } = useI18n({});
 async function chargeAndReleaseParkingSpace() {
   await changeParkingState(
     props.invoice.parkingSpace.id,
@@ -60,12 +61,7 @@ async function chargeAndReleaseParkingSpace() {
 
   await registerVehicleExitFromParkingSpace(props.invoice);
 
-  $q.notify({
-    color: "green-4",
-    textColor: "white",
-    icon: "cloud_done",
-    message: "Successfull payment",
-  });
+  messages.notifySucessMessage(t("message.exit.succesfullPayment"));
 }
 </script>
 <style lang="postcss"></style>

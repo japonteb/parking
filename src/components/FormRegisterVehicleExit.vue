@@ -41,8 +41,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useQuasar } from "quasar";
 import { ref } from "vue";
+import { useI18n } from "vue-i18n";
+import useMessages from "~/composables/useMessages";
 import {
   getInvoiceByParkingLocationService,
   getInvoiceByLicensePlateService,
@@ -63,7 +64,8 @@ if (props.location) {
   location.value = props.location as string;
 }
 
-const $q = useQuasar();
+const messages = useMessages();
+const { t } = useI18n({});
 async function searchInvoiceByLocationOrByLicensePlate() {
   let invoiceQueryResult: Invoice[] = [];
   if (location.value) {
@@ -78,12 +80,7 @@ async function searchInvoiceByLocationOrByLicensePlate() {
   if (invoiceQueryResult.length) {
     emit("setInvoiceAndCalculateParkingPrice", invoiceQueryResult[0]);
   } else {
-    $q.notify({
-      color: "red-5",
-      textColor: "white",
-      icon: "warning",
-      message: "There are no results for this search",
-    });
+    messages.notifyErrorMessage(t("message.exit.noResults"));
   }
 }
 

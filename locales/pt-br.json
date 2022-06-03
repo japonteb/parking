@@ -12,7 +12,14 @@
     },
     "index": {
       "title": "Seja bem-vindo ao aplicativo de estacionamento!",
-      "subtitle": "Selecione um estacionamento"
+      "subtitle": "Selecione um estacionamento",
+      "cars": "Carros",
+      "motorcycles": "Motos",
+      "car": "Carro",
+      "motorcycle": "Moto",
+      "rates": "Taxas para hoje",
+      "hour": "Hora:",
+      "day": "Dia (de 8 horas a 24 horas de estacionamento)"
     },
     "entry": {
       "location": "Localização: *",
@@ -20,13 +27,18 @@
       "cylinderCapacity": "Cilindrada: *",
       "vehicleType": "Tipo de veículo: *",
       "register": "Registrar",
-      "reset": "Limpar"
+      "reset": "Limpar",
+      "trafficRestriction": "Não se pode registar o ingreso do veículo porque está em rodizio",
+      "locationNotFound": "Não há vagas de estacionamento com esta localização",
+      "parkingSpaceAssignedSuccesfully": "Estacionamento atribuído com sucesso"
     },
     "exit": {
       "byLocation": "Pesquisar por local:",
       "byLicensePlate": "Pesquisar por matricula:",
       "search": "Pesquisar",
-      "charge": "Cobrar"
+      "charge": "Cobrar",
+      "succesfullPayment": "Pagamento bem-sucedido",
+      "noResults": "Não há resultados para esta pesquisa"
     }
   }
 }

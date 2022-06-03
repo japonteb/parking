@@ -32,12 +32,13 @@ export const changeParkingState = (
     .json();
 };
 export const isVehicleInTrafficRestriction = (
-  licensePlate: string
+  licensePlate: string,
+  vehicleType: string
 ): Promise<boolean> => {
   const entryDateTime: Date = new Date();
   return kyBaseBusiness
     .post(`${parkingURL}/traffic-restriction`, {
-      json: { licensePlate, date: entryDateTime.toUTCString },
+      json: { licensePlate, entry: entryDateTime.toUTCString(), vehicleType },
     })
     .json();
 };

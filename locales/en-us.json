@@ -12,20 +12,32 @@
     },
     "index": {
       "title": "Welcome to Parking App!",
-      "subtitle": "Select a parking space"
+      "subtitle": "Select a parking space",
+      "cars": "Cars",
+      "motorcycles": "Motorcycles",
+      "car": "Car",
+      "motorcycle": "Motorcycle",
+      "rates": "Rates for today",
+      "hour": "Hour:",
+      "day": "Day (from 8 hours to 24 hours of parking):"
     },
     "entry": {
       "location": "Location: *",
       "licensePlate": "License Plate: *",
       "cylinderCapacity": "Cylinder Capacity: *",
       "vehicleType": "Vehicle Type: *",
-      "register": "Register"
+      "register": "Register",
+      "trafficRestriction": "The entry of the vehicle cannot be registered because it is in traffic restriction",
+      "locationNotFound": "There are no parking spaces with this location",
+      "parkingSpaceAssignedSuccesfully": "Parking space assigned successfully"
     },
     "exit": {
       "byLocation": "Search by location:",
       "byLicensePlate": "Search by license plate:",
       "search": "Search",
-      "charge": "Charge"
+      "charge": "Charge",
+      "succesfullPayment": "Successfull payment",
+      "noResults": "There are no results for this search"
     }
   }
 }

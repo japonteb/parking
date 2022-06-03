@@ -12,20 +12,32 @@
     },
     "index": {
       "title": "¡Bienvenido a la aplicación de parqueo!",
-      "subtitle": "Seleccione un parqueadero"
+      "subtitle": "Seleccione un parqueadero",
+      "cars": "Carros",
+      "motorcycles": "Motos",
+      "car": "Carro",
+      "motorcycle": "Moto",
+      "rates": "Tarifas del día",
+      "hour": "Hora:",
+      "day": "Día (a partir de 8 horas hasta 24 horas):"
     },
     "entry": {
       "location": "Ubicación: *",
       "licensePlate": "Placa: *",
       "cylinderCapacity": "Cilindraje: *",
       "vehicleType": "Tipo de vehículo: *",
-      "register": "Registrar"
+      "register": "Registrar",
+      "trafficRestriction": "No se puede registrar el ingreso del vehículo porque está en pico y placa",
+      "locationNotFound": "No hay parqueaderos con esta ubicación",
+      "parkingSpaceAssignedSuccesfully": "Parqueadero asignado satisfactoriamente"
     },
     "exit": {
       "byLocation": "Buscar por ubicación:",
       "byLicensePlate": "Buscar por placa:",
       "search": "Buscar",
-      "charge": "Cobrar"
+      "charge": "Cobrar",
+      "succesfullPayment": "Pago realizado exitosamente",
+      "noResults": "No existen resultados para esta búsqueda"
     }
   }
 }

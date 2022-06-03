@@ -8,6 +8,7 @@ test("basic test", async ({ page }) => {
 
 test("Register entry vehicle", async ({ page }) => {
   await page.goto("http://localhost:3333/#/");
+  await page.locator('text=C5crop_free >> i[role="img"]').click();
   await page.locator('[aria-label="License\\ Plate\\:\\ \\*"]').click();
   await page.locator('[aria-label="License\\ Plate\\:\\ \\*"]').fill("HVN876");
   await page

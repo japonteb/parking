@@ -1,15 +1,17 @@
 <template>
-  <div class="row">
-    <FormRegisterVehicleExit
-      :invoice="invoice"
-      :location="location"
-      @set-invoice-and-calculate-parking-price="
-        setInvoiceAndCalculateParkingPrice
-      "
-    />
-  </div>
-  <div class="row">
-    <ChargeParking :invoice="invoice" v-show="showChargeSection" />
+  <div>
+    <div class="row">
+      <FormRegisterVehicleExit
+        :invoice="invoice"
+        :location="location"
+        @set-invoice-and-calculate-parking-price="
+          setInvoiceAndCalculateParkingPrice
+        "
+      />
+    </div>
+    <div class="row">
+      <ChargeParking :invoice="invoice" v-show="showChargeSection" />
+    </div>
   </div>
 </template>
 

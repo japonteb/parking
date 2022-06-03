@@ -84,10 +84,12 @@
 </template>
 
 <script setup lang="ts">
-import { useQuasar } from "quasar";
 import { ref } from "vue";
+import { useI18n } from "vue-i18n";
+import useMessages from "~/composables/useMessages";
 import { ParkingSpaceState } from "~/models/parkingSpaceState.enum";
 import { VehicleType } from "~/models/vehicleType.enum";
+
 import {
   Invoice,
   registerInvoiceVehicleEntry,
@@ -127,20 +129,16 @@ const optionsVehicleType: { label: string; value: string }[] = [
   { label: "Motorcycle", value: VehicleType.MOTORCYCLE_TYPE },
 ];
 
-const $q = useQuasar();
+const messages = useMessages();
+const { t } = useI18n({});
 async function onSubmit() {
   let isTrafficRestiction: boolean = await isVehicleInTrafficRestriction(
-    licensePlate.value
+    licensePlate.value,
+    vehicleType.value
   );
 
   if (isTrafficRestiction) {
-    $q.notify({
-      color: "red-5",
-      textColor: "white",
-      icon: "warning",
-      message:
-        "The entry of the vehicle cannot be registered because it is in traffic restriction",
-    });
+    messages.notifyErrorMessage(t("message.entry.trafficRestriction"));
     return;
   }
 
@@ -148,12 +146,7 @@ async function onSubmit() {
     await getParkingSpaceByLocationService(location.value);
 
   if (!parkingSpaceResult.length) {
-    $q.notify({
-      color: "red-5",
-      textColor: "white",
-      icon: "warning",
-      message: "There are no parking spaces with this location",
-    });
+    messages.notifyErrorMessage(t("message.entry.locationNotFound"));
     return;
   }
 
@@ -174,12 +167,9 @@ async function onSubmit() {
     ParkingSpaceState.BUSY
   );
 
-  $q.notify({
-    color: "green-4",
-    textColor: "white",
-    icon: "cloud_done",
-    message: "Parking space assigned successfully",
-  });
+  messages.notifySucessMessage(
+    t("message.entry.parkingSpaceAssignedSuccesfully")
+  );
 }
 
 function onReset() {

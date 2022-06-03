@@ -8,14 +8,14 @@
   <div class="row justify-center">
     <div class="col col-4">
       <ParkingSpace
-        title="Cars"
+        :title="$t('message.index.cars')"
         :parkingSpace="parkingCarSpaces"
         spaceIcon="directions_car_filled"
       />
     </div>
     <div class="col col-4">
       <ParkingSpace
-        title="Motorcycles"
+        :title="$t('message.index.motorcycles')"
         :parkingSpace="parkingMotorcycleSpaces"
         spaceIcon="two_wheeler"
       />
@@ -23,14 +23,14 @@
   </div>
   <div>
     <span class="text-center">
-      <h6 class="text-h6">Rates for today</h6>
+      <h6 class="text-h6">{{ $t("message.index.rates") }}</h6>
       <RateSpace
-        title="Car"
+        :title="$t('message.index.car')"
         :hourValue="carHourValue"
         :dayValue="carDayValue"
       />
       <RateSpace
-        title="Motorcycle"
+        :title="$t('message.index.motorcycle')"
         :hourValue="motorcycleHourValue"
         :dayValue="motorcycleDayValue"
       />
