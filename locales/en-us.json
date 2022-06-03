@@ -1,7 +1,7 @@
 {
   "message": {
     "layout": {
-      "parking": "Parking",
+      "parking": "Parking Lot",
       "administrator": "Administrator",
       "home": "Home",
       "registerVehicleEntry": "Register Vehicle Entry",
@@ -23,9 +23,9 @@
     },
     "exit": {
       "byLocation": "Search by location:",
-      "byLicensePlate": "Search by license Plate:",
-      "search": "Search"
+      "byLicensePlate": "Search by license plate:",
+      "search": "Search",
+      "charge": "Charge"
     }
-  },
-  "select-a-parking-space": "Select a parking space"
+  }
 }

@@ -10,13 +10,13 @@ const messages = fromPairs(
   )
 );
 
+export const i18n = createI18n({
+  legacy: false,
+  locale: "en-us",
+  globalInjection: true,
+  messages,
+});
+
 export const install = (app: App) => {
-  app.use(
-    createI18n({
-      legacy: false,
-      locale: "en-us",
-      globalInjection: true,
-      messages,
-    })
-  );
+  app.use(i18n);
 };

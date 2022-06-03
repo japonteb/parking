@@ -7,6 +7,13 @@
       "registerVehicleEntry": "Registre a entrada do veículo",
       "registerVehicleExit": "Registre a saída do veículo"
     },
+    "general": {
+      "reset": "Limpar"
+    },
+    "index": {
+      "title": "Seja bem-vindo ao aplicativo de estacionamento!",
+      "subtitle": "Selecione um estacionamento"
+    },
     "entry": {
       "location": "Localização: *",
       "licensePlate": "Placa: *",
@@ -14,6 +21,12 @@
       "vehicleType": "Tipo de veículo: *",
       "register": "Registrar",
       "reset": "Limpar"
+    },
+    "exit": {
+      "byLocation": "Pesquisar por local:",
+      "byLicensePlate": "Pesquisar por matricula:",
+      "search": "Pesquisar",
+      "charge": "Cobrar"
     }
   }
 }

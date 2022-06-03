@@ -1,15 +1,30 @@
+import { ParkingSpace } from "./../../services/parking-service";
 import { defineStore } from "pinia";
+import { getParkingSpacesService } from "../../services/parking-service";
 
-export const useParkingStore = defineStore("parking", {
-  state: () => ({
-    parking: 18,
-  }),
+export type RootParkingState = {
+  parkingSpaces: ParkingSpace[];
+};
+
+export const useParkingStore = defineStore("parkingStore", {
+  state: () =>
+    ({
+      parkingSpaces: [],
+    } as RootParkingState),
+
   getters: {
-    doubleParking: (state) => state.parking * 2,
+    getParkingSpaces: (state): ParkingSpace[] => {
+      return state.parkingSpaces;
+    },
   },
   actions: {
-    increment() {
-      this.parking++;
+    async fetchParkingSpaces() {
+      try {
+        const data = await getParkingSpacesService();
+        this.parkingSpaces = data;
+      } catch (error) {
+        console.error(error);
+      }
     },
   },
 });

@@ -3,12 +3,16 @@
     <q-layout
       view="lHh Lpr lff"
       container
-      style="min-height: 700px"
+      style="min-height: 730px"
       class="shadow-2 rounded-borders"
     >
       <q-header elevated class="bg-cyan-8">
         <q-toolbar>
           <q-toolbar-title>{{ $t("message.layout.parking") }}</q-toolbar-title>
+          <a href=""></a>
+          <q-btn label="🇬🇧" @click="$i18n.locale = 'en-us'" />
+          <q-btn label="🇪🇸" @click="$i18n.locale = 'es-co'" />
+          <q-btn label="🇧🇷" @click="$i18n.locale = 'pt-br'" />
           <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
         </q-toolbar>
       </q-header>

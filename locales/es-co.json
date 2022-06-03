@@ -7,13 +7,25 @@
       "registerVehicleEntry": "Registrar ingreso del vehículo",
       "registerVehicleExit": "Registrar salida del vehículo"
     },
+    "general": {
+      "reset": "Limpiar"
+    },
+    "index": {
+      "title": "¡Bienvenido a la aplicación de parqueo!",
+      "subtitle": "Seleccione un parqueadero"
+    },
     "entry": {
       "location": "Ubicación: *",
       "licensePlate": "Placa: *",
       "cylinderCapacity": "Cilindraje: *",
       "vehicleType": "Tipo de vehículo: *",
-      "register": "Registrar",
-      "reset": "Limpiar"
+      "register": "Registrar"
+    },
+    "exit": {
+      "byLocation": "Buscar por ubicación:",
+      "byLicensePlate": "Buscar por placa:",
+      "search": "Buscar",
+      "charge": "Cobrar"
     }
   }
 }
