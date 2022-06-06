@@ -1,5 +1,5 @@
-import { ParkingSpace } from "./parking-service";
-import { kyBase, kyBaseBusiness } from "./api-base";
+import { kyBase, kyBaseBusiness } from './api-base';
+import { ParkingSpace } from './parking-service';
 
 // Types //
 
@@ -14,8 +14,8 @@ export interface Invoice {
   open: boolean;
 }
 
-const parkingURL = "parking";
-const invoiceURL = "invoice";
+const parkingURL = 'parking';
+const invoiceURL = 'invoice';
 
 export const registerInvoiceVehicleEntry = (invoice: Invoice): Invoice => {
   invoice.id = Math.floor(Math.random() * 1000);

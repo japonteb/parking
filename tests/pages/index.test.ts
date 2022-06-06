@@ -1,9 +1,11 @@
-import { createTestingPinia } from "@pinia/testing";
-import { shallowMount, mount, flushPromises } from "@vue/test-utils";
-import { Quasar } from "quasar";
-import IndexPage from "~/pages/index.vue";
-import { i18n } from "../../src/modules/i18n";
-import { describe, test, expect } from "vitest";
+import { createTestingPinia } from '@pinia/testing';
+import { mount, shallowMount } from '@vue/test-utils';
+import { Quasar } from 'quasar';
+import { describe, expect, test } from 'vitest';
+
+import { i18n } from '../../src/modules/i18n';
+
+import IndexPage from '~/pages/index.vue';
 
 const wrapperFactoryShallowMount = () =>
   shallowMount(IndexPage, {
@@ -19,17 +21,17 @@ const wrapperFactoryMount = () =>
     },
   });
 
-describe("Index", () => {
-  test("shallowMount component", () => {
+describe('Index', () => {
+  test('shallowMount component', () => {
     expect(IndexPage).toBeTruthy();
 
     const wrapper = wrapperFactoryShallowMount();
     const title = wrapper.get('[data-id="title-index"]');
 
-    expect(title.text()).toContain("Welcome to Parking App");
+    expect(title.text()).toContain('Welcome to Parking App');
   });
 
-  test("mount component", async () => {
+  test('mount component', async () => {
     expect(IndexPage).toBeTruthy();
 
     const wrapper = wrapperFactoryMount();

@@ -13,42 +13,44 @@
       <q-btn
         data-id="btn-charge"
         :label="$t('message.exit.charge')"
-        @click="chargeAndReleaseParkingSpace"
         color="primary"
         no-caps
+        @click="chargeAndReleaseParkingSpace"
       />
     </span>
   </div>
 </template>
 <script setup lang="ts">
-import { date } from "quasar";
+import { date } from 'quasar';
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+
 import {
   registerVehicleExitFromParkingSpace,
   Invoice,
-} from "../../services/invoice-service";
-import { changeParkingState } from "../../services/parking-service";
-import { ParkingSpaceState } from "~/models/parkingSpaceState.enum";
-import { computed } from "vue";
-import useMessages from "~/composables/useMessages";
-import { useI18n } from "vue-i18n";
+} from '../../services/invoice-service';
+import { changeParkingState } from '../../services/parking-service';
+
+import useMessages from '~/composables/useMessages';
+import { ParkingSpaceState } from '~/models/parkingSpaceState.enum';
 
 const props = defineProps<{
   invoice: Invoice;
 }>();
 
-const formatDateTime = "HH:mm a - DD/MM/YYYY";
+const formatDateTime = 'HH:mm a - DD/MM/YYYY';
 const formattedEntryDatetime = computed(() => {
   if (props.invoice.entryDatetime) {
     return date.formatDate(props.invoice.entryDatetime, formatDateTime);
   }
-  return "";
+  return '';
 });
 
 const formattedExitDatetime = computed(() => {
   if (props.invoice.exitDatetime) {
     return date.formatDate(props.invoice.exitDatetime, formatDateTime);
   }
-  return "";
+  return '';
 });
 
 const messages = useMessages();
@@ -61,7 +63,7 @@ async function chargeAndReleaseParkingSpace() {
 
   await registerVehicleExitFromParkingSpace(props.invoice);
 
-  messages.notifySucessMessage(t("message.exit.succesfullPayment"));
+  messages.notifySucessMessage(t('message.exit.succesfullPayment'));
 }
 </script>
 <style lang="postcss"></style>

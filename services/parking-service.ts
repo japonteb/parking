@@ -1,4 +1,4 @@
-import { kyBase, kyBaseBusiness } from "./api-base";
+import { kyBase, kyBaseBusiness } from './api-base';
 
 // Types //
 
@@ -9,7 +9,7 @@ export interface ParkingSpace {
   state: string;
 }
 
-const parkingURL = "parking";
+const parkingURL = 'parking';
 
 export const getParkingSpacesService = (): Promise<ParkingSpace[]> => {
   return kyBase(parkingURL).json();

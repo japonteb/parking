@@ -1,17 +1,19 @@
-import { shallowMount, mount, flushPromises } from "@vue/test-utils";
-import { Quasar } from "quasar";
-import FormRegisterVehicleEntryComponent from "~/components/FormRegisterVehicleEntry.vue";
-import { i18n } from "../../src/modules/i18n";
-import { describe, test, expect } from "vitest";
+import { mount, shallowMount } from '@vue/test-utils';
+import { Quasar } from 'quasar';
+import { describe, expect, test } from 'vitest';
+
+import { i18n } from '../../src/modules/i18n';
+
+import FormRegisterVehicleEntryComponent from '~/components/FormRegisterVehicleEntry.vue';
 
 const defaultPropsCar = {
-  location: "C1",
-  vehicleType: "car",
+  location: 'C1',
+  vehicleType: 'car',
 };
 
 const defaultPropsMotorcycle = {
-  location: "M1",
-  vehicleType: "motorcycle",
+  location: 'M1',
+  vehicleType: 'motorcycle',
 };
 
 const wrapperFactory = (defaultProps = defaultPropsCar) =>
@@ -30,25 +32,25 @@ const wrapperFactoryMount = (defaultProps = defaultPropsCar) =>
     },
   });
 
-describe("FormRegisterVehicleEntryComponent", () => {
+describe('FormRegisterVehicleEntryComponent', () => {
   beforeEach(() => {
     expect(FormRegisterVehicleEntryComponent).toBeTruthy();
   });
 
-  test("should render correct title", () => {
+  test('should render correct title', () => {
     const wrapper = wrapperFactory();
-    const titleText = "Register Vehicle Entry";
+    const titleText = 'Register Vehicle Entry';
     const title = wrapper.get('[data-id="title"]');
     expect(title.text()).toContain(titleText);
   });
 
-  test("should not render cylinder capacity when vehicle type is a car", () => {
+  test('should not render cylinder capacity when vehicle type is a car', () => {
     const wrapper = wrapperFactoryMount();
     const cylinderCapacity = wrapper.find('[data-id="cylinder-capacity"]');
     expect(cylinderCapacity.exists()).toBe(false);
   });
 
-  test("should render cylinder capacity when vehicle type is a motorcycle", () => {
+  test('should render cylinder capacity when vehicle type is a motorcycle', () => {
     const wrapper = wrapperFactoryMount(defaultPropsMotorcycle);
     const cylinderCapacity = wrapper.find('[data-id="cylinder-capacity"]');
     expect(cylinderCapacity.exists()).toBe(true);

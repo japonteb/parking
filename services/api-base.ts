@@ -1,14 +1,14 @@
-import ky from "ky";
-import type { NormalizedOptions } from "ky";
+import ky from 'ky';
+import type { NormalizedOptions } from 'ky';
 
 export const enum RESPONSE_STATUS {
-  SUCCESS = "OK",
-  FAIL = "FAIL",
+  SUCCESS = 'OK',
+  FAIL = 'FAIL',
 }
 
 export const enum YN_BOOLEAN {
-  true = "Y",
-  false = "N",
+  true = 'Y',
+  false = 'N',
 }
 
 export interface StatusResponse {
@@ -33,7 +33,7 @@ export const afterResponseFn = async (
 
 export const kyBase = ky.create({
   prefixUrl: import.meta.env.VITE_BASE_API_URL,
-  method: "GET",
+  method: 'GET',
   retry: 0,
   hooks: {
     afterResponse: [afterResponseFn],
@@ -42,7 +42,7 @@ export const kyBase = ky.create({
 
 export const kyBaseBusiness = ky.create({
   prefixUrl: import.meta.env.VITE_BASE_API_URL_BUSINESS,
-  method: "GET",
+  method: 'GET',
   retry: 0,
   hooks: {
     afterResponse: [afterResponseFn],

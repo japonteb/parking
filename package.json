@@ -77,5 +77,8 @@
     "vitest": "^0.6.1",
     "vue-tsc": "^0.32.0"
   },
-  "packageManager": "yarn@3.1.1"
+  "packageManager": "yarn@3.1.1",
+  "prettier": {
+    "singleQuote": true
+  }
 }

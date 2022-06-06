@@ -1,9 +1,9 @@
-import { fromPairs } from "ramda";
-import type { App } from "vue";
-import { createI18n } from "vue-i18n";
+import { fromPairs } from 'ramda';
+import type { App } from 'vue';
+import { createI18n } from 'vue-i18n';
 
 const messages = fromPairs(
-  Object.entries(import.meta.globEager("../../locales/*.json")).map(
+  Object.entries(import.meta.globEager('../../locales/*.json')).map(
     ([key, value]) => {
       return [key.slice(14, -5), value.default];
     }
@@ -12,7 +12,7 @@ const messages = fromPairs(
 
 export const i18n = createI18n({
   legacy: false,
-  locale: "en-us",
+  locale: 'en-us',
   globalInjection: true,
   messages,
 });

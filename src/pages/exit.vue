@@ -10,18 +10,18 @@
       />
     </div>
     <div class="row">
-      <ChargeParking :invoice="invoice" v-show="showChargeSection" />
+      <ChargeParking v-show="showChargeSection" :invoice="invoice" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { useRoute } from "vue-router";
-import { Invoice } from "../../services/invoice-service";
-import { calculateParkingPrice } from "../../services/invoice-service";
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';
 
-let location = ref<string>("");
+import { calculateParkingPrice, Invoice } from '../../services/invoice-service';
+
+let location = ref<string>('');
 let showChargeSection = ref<boolean>(false);
 
 const route = useRoute();
@@ -32,8 +32,8 @@ if (route.params?.location) {
 
 let invoice = ref<Invoice>({
   id: -1,
-  parkingSpace: { id: -1, location: "", type: "", state: "" },
-  licensePlate: "",
+  parkingSpace: { id: -1, location: '', type: '', state: '' },
+  licensePlate: '',
   open: true,
 });
 

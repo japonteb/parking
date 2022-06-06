@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { ParkingSpace } from "services/parking-service";
+import { ParkingSpace } from 'services/parking-service';
 
 const props = defineProps<{
   title: string;

@@ -1,17 +1,20 @@
 <template>
   <div class="row">
-    <FormRegisterVehicleEntry :location="location" :vehicleType="vehicleType" />
+    <FormRegisterVehicleEntry
+      :location="location"
+      :vehicle-type="vehicleType"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { useRoute } from "vue-router";
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';
 
 const route = useRoute();
 
-let location = ref<string>("");
-let vehicleType = ref<string>("");
+let location = ref<string>('');
+let vehicleType = ref<string>('');
 
 if (route.params?.location) {
   location.value = route.params.location as string;

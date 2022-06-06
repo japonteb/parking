@@ -2,15 +2,15 @@
   <div class="column col-3 q-mx-auto q-mt-lg">
     <span class="text-center text-subtitle2 q-my-sm">
       <h6 class="text-h6" data-id="title">
-        {{ $t("message.layout.registerVehicleEntry") }}
+        {{ $t('message.layout.registerVehicleEntry') }}
       </h6>
 
-      <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
+      <q-form class="q-gutter-md" @submit="onSubmit" @reset="onReset">
         <q-input
+          v-model="location"
           filled
           data-id="input-location"
           :disable="activeLocation"
-          v-model="location"
           :label="$t('message.entry.location')"
           lazy-rules
           :rules="[
@@ -20,6 +20,7 @@
 
         <q-select
           v-model="vehicleType"
+          data-id="input-vehicle-type"
           :disable="activeType"
           :options="optionsVehicleType"
           option-label="label"
@@ -34,8 +35,9 @@
         />
 
         <q-input
-          filled
           v-model="licensePlate"
+          filled
+          data-id="input-license-plate"
           :label="$t('message.entry.licensePlate')"
           lazy-rules
           :rules="[
@@ -44,13 +46,13 @@
         />
 
         <q-input
+          v-model="cylinderCapacity"
           filled
           data-id="cylinder-capacity"
           type="number"
-          v-model="cylinderCapacity"
+          v-if="vehicleType === VehicleType.MOTORCYCLE_TYPE"
           :label="$t('message.entry.cylinderCapacity')"
           lazy-rules
-          v-if="vehicleType === VehicleType.MOTORCYCLE_TYPE"
           :rules="[
             (val) =>
               (val !== null && val !== '') ||
@@ -84,31 +86,32 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { useI18n } from "vue-i18n";
-import useMessages from "~/composables/useMessages";
-import { ParkingSpaceState } from "~/models/parkingSpaceState.enum";
-import { VehicleType } from "~/models/vehicleType.enum";
+import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 import {
   Invoice,
   registerInvoiceVehicleEntry,
-} from "../../services/invoice-service";
+} from '../../services/invoice-service';
 import {
   changeParkingState,
   getParkingSpaceByLocationService,
   isVehicleInTrafficRestriction,
   ParkingSpace,
-} from "../../services/parking-service";
+} from '../../services/parking-service';
+
+import useMessages from '~/composables/useMessages';
+import { ParkingSpaceState } from '~/models/parkingSpaceState.enum';
+import { VehicleType } from '~/models/vehicleType.enum';
 
 const props = defineProps<{
   location?: string;
   vehicleType?: string;
 }>();
 
-let location = ref<string>("");
-let vehicleType = ref<string>("");
-let licensePlate = ref<string>("");
+let location = ref<string>('');
+let vehicleType = ref<string>('');
+let licensePlate = ref<string>('');
 let cylinderCapacity = ref<number>(0);
 
 let activeLocation = ref<boolean>(false);
@@ -125,8 +128,8 @@ if (props.vehicleType) {
 }
 
 const optionsVehicleType: { label: string; value: string }[] = [
-  { label: "Car", value: VehicleType.CAR_TYPE },
-  { label: "Motorcycle", value: VehicleType.MOTORCYCLE_TYPE },
+  { label: 'Car', value: VehicleType.CAR_TYPE },
+  { label: 'Motorcycle', value: VehicleType.MOTORCYCLE_TYPE },
 ];
 
 const messages = useMessages();
@@ -138,7 +141,7 @@ async function onSubmit() {
   );
 
   if (isTrafficRestiction) {
-    messages.notifyErrorMessage(t("message.entry.trafficRestriction"));
+    messages.notifyErrorMessage(t('message.entry.trafficRestriction'));
     return;
   }
 
@@ -146,7 +149,7 @@ async function onSubmit() {
     await getParkingSpaceByLocationService(location.value);
 
   if (!parkingSpaceResult.length) {
-    messages.notifyErrorMessage(t("message.entry.locationNotFound"));
+    messages.notifyErrorMessage(t('message.entry.locationNotFound'));
     return;
   }
 
@@ -168,14 +171,14 @@ async function onSubmit() {
   );
 
   messages.notifySucessMessage(
-    t("message.entry.parkingSpaceAssignedSuccesfully")
+    t('message.entry.parkingSpaceAssignedSuccesfully')
   );
 }
 
 function onReset() {
-  location.value = "";
-  vehicleType.value = "";
-  licensePlate.value = "";
+  location.value = '';
+  vehicleType.value = '';
+  licensePlate.value = '';
   cylinderCapacity.value = 0;
   activeLocation.value = false;
   activeType.value = false;

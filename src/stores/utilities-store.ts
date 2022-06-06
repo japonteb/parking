@@ -1,12 +1,15 @@
-import { Constant } from "./../../services/utilities-service";
-import { defineStore } from "pinia";
-import { getConstantsBusinessService } from "../../services/utilities-service";
+import { defineStore } from 'pinia';
+
+import {
+  Constant,
+  getConstantsBusinessService,
+} from '../../services/utilities-service';
 
 export type RootConstantState = {
   constants: Constant[];
 };
 
-export const useUtilitiesStore = defineStore("utilitiesStore", {
+export const useUtilitiesStore = defineStore('utilitiesStore', {
   state: () =>
     ({
       constants: [],

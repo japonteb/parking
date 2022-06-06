@@ -1,50 +1,52 @@
 <template>
   <span class="text-center">
     <h6 data-id="title-index" class="text-h6">
-      {{ $t("message.index.title") }}
+      {{ $t('message.index.title') }}
     </h6>
-    <p>{{ $t("message.index.subtitle") }}</p>
+    <p>{{ $t('message.index.subtitle') }}</p>
   </span>
   <div class="row justify-center">
     <div class="col col-4">
       <ParkingSpace
         :title="$t('message.index.cars')"
-        :parkingSpace="parkingCarSpaces"
-        spaceIcon="directions_car_filled"
+        :parking-space="parkingCarSpaces"
+        space-icon="directions_car_filled"
       />
     </div>
     <div class="col col-4">
       <ParkingSpace
         :title="$t('message.index.motorcycles')"
-        :parkingSpace="parkingMotorcycleSpaces"
-        spaceIcon="two_wheeler"
+        :parking-space="parkingMotorcycleSpaces"
+        space-icon="two_wheeler"
       />
     </div>
   </div>
   <div>
     <span class="text-center">
-      <h6 class="text-h6">{{ $t("message.index.rates") }}</h6>
+      <h6 class="text-h6">{{ $t('message.index.rates') }}</h6>
       <RateSpace
         :title="$t('message.index.car')"
-        :hourValue="carHourValue"
-        :dayValue="carDayValue"
+        :hour-value="carHourValue"
+        :day-value="carDayValue"
       />
       <RateSpace
         :title="$t('message.index.motorcycle')"
-        :hourValue="motorcycleHourValue"
-        :dayValue="motorcycleDayValue"
+        :hour-value="motorcycleHourValue"
+        :day-value="motorcycleDayValue"
       />
     </span>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import useUtilities from "~/composables/useUtilities";
-import { ConstantBusiness } from "~/models/constants.enum";
-import { VehicleType } from "~/models/vehicleType.enum";
-import { useParkingStore } from "../stores/parking-store";
-import { useUtilitiesStore } from "../stores/utilities-store";
+import { computed } from 'vue';
+
+import { useParkingStore } from '../stores/parking-store';
+import { useUtilitiesStore } from '../stores/utilities-store';
+
+import useUtilities from '~/composables/useUtilities';
+import { ConstantBusiness } from '~/models/constants.enum';
+import { VehicleType } from '~/models/vehicleType.enum';
 
 const parkingStore = useParkingStore();
 

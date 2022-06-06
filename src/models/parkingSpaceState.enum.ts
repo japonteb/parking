@@ -1,4 +1,4 @@
 export enum ParkingSpaceState {
-  FREE = "free",
-  BUSY = "busy",
+  FREE = 'free',
+  BUSY = 'busy',
 }

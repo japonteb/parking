@@ -1,4 +1,4 @@
-import { kyBase } from "./api-base";
+import { kyBase } from './api-base';
 
 // Types //
 
@@ -11,5 +11,5 @@ export interface Constant {
 }
 
 export const getConstantsBusinessService = (): Promise<Constant[]> => {
-  return kyBase("constant").json();
+  return kyBase('constant').json();
 };

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75.84% </span>
+                <span class="strong">75.8% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>135/178</span>
+                <span class='fraction'>141/186</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75.84% </span>
+                <span class="strong">75.8% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>135/178</span>
+                <span class='fraction'>141/186</span>
             </div>
         
             
@@ -241,7 +241,15 @@
 <a name='L176'></a><a href='#L176'>176</a>
 <a name='L177'></a><a href='#L177'>177</a>
 <a name='L178'></a><a href='#L178'>178</a>
-<a name='L179'></a><a href='#L179'>179</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -370,6 +378,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -441,6 +457,7 @@
 &nbsp;
         &lt;q-select
           v-model="<span class="fstat-no" title="function not covered" >vehicleType"</span>
+          data-id="input-vehicle-type"
           :disable="activeType"
           :options="optionsVehicleType"
           option-label="label"
@@ -456,6 +473,7 @@
 &nbsp;
         &lt;q-input
           filled
+          data-id="input-license-plate"
           v-model="<span class="fstat-no" title="function not covered" >licensePlate"</span>
           :label="$t('message.entry.licensePlate')"
           lazy-rules
@@ -505,10 +523,12 @@
 &lt;/template&gt;
 &nbsp;
 &lt;script setup lang="ts"&gt;
-import { useQuasar } from "quasar";
 import { ref } from "vue";
+import { useI18n } from "vue-i18n";
+import useMessages from "~/composables/useMessages";
 import { ParkingSpaceState } from "~/models/parkingSpaceState.enum";
 import { VehicleType } from "~/models/vehicleType.enum";
+&nbsp;
 import {
   Invoice,
   registerInvoiceVehicleEntry,
@@ -516,6 +536,7 @@ import {
 import {
   changeParkingState,
   getParkingSpaceByLocationService,
+  isVehicleInTrafficRestriction,
   ParkingSpace,
 } from "../../services/parking-service";
 &nbsp;
@@ -547,18 +568,24 @@ const optionsVehicleType: { label: string; value: string }[] = [
   { label: "Motorcycle", value: VehicleType.MOTORCYCLE_TYPE },
 ];
 &nbsp;
-const $q = useQuasar();
+const messages = useMessages();
+const { t } = useI18n({});
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >async function onSubmit() {</span></span>
+<span class="cstat-no" title="statement not covered" >  let isTrafficRestiction: boolean = await isVehicleInTrafficRestriction(</span>
+<span class="cstat-no" title="statement not covered" >    licensePlate.value,</span>
+<span class="cstat-no" title="statement not covered" >    vehicleType.value</span>
+<span class="cstat-no" title="statement not covered" >  );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  if (isTrafficRestiction) {</span>
+<span class="cstat-no" title="statement not covered" >    messages.notifyErrorMessage(t("message.entry.trafficRestriction"));</span>
+<span class="cstat-no" title="statement not covered" >    return;</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  let parkingSpaceResult: ParkingSpace[] =</span>
 <span class="cstat-no" title="statement not covered" >    await getParkingSpaceByLocationService(location.value);</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  if (!parkingSpaceResult.length) {</span>
-<span class="cstat-no" title="statement not covered" >    $q.notify({</span>
-<span class="cstat-no" title="statement not covered" >      color: "red-5",</span>
-<span class="cstat-no" title="statement not covered" >      textColor: "white",</span>
-<span class="cstat-no" title="statement not covered" >      icon: "warning",</span>
-<span class="cstat-no" title="statement not covered" >      message: "There are no parking spaces with this location",</span>
-<span class="cstat-no" title="statement not covered" >    });</span>
+<span class="cstat-no" title="statement not covered" >    messages.notifyErrorMessage(t("message.entry.locationNotFound"));</span>
 <span class="cstat-no" title="statement not covered" >    return;</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -579,12 +606,9 @@ const $q = useQuasar();
 <span class="cstat-no" title="statement not covered" >    ParkingSpaceState.BUSY</span>
 <span class="cstat-no" title="statement not covered" >  );</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  $q.notify({</span>
-<span class="cstat-no" title="statement not covered" >    color: "green-4",</span>
-<span class="cstat-no" title="statement not covered" >    textColor: "white",</span>
-<span class="cstat-no" title="statement not covered" >    icon: "cloud_done",</span>
-<span class="cstat-no" title="statement not covered" >    message: "Parking space assigned successfully",</span>
-  });
+<span class="cstat-no" title="statement not covered" >  messages.notifySucessMessage(</span>
+<span class="cstat-no" title="statement not covered" >    t("message.entry.parkingSpaceAssignedSuccesfully")</span>
+  );
 }
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function onReset() {</span></span>
@@ -604,7 +628,7 @@ const $q = useQuasar();
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu Jun 02 2022 20:02:01 GMT-0500 (Colombia Standard Time)
+                at Fri Jun 03 2022 09:23:42 GMT-0500 (Colombia Standard Time)
             </div>
         <script src="../../../prettify.js"></script>
         <script>

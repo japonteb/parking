@@ -1,12 +1,15 @@
-import { ParkingSpace } from "./../../services/parking-service";
-import { defineStore } from "pinia";
-import { getParkingSpacesService } from "../../services/parking-service";
+import { defineStore } from 'pinia';
+
+import {
+  getParkingSpacesService,
+  ParkingSpace,
+} from '../../services/parking-service';
 
 export type RootParkingState = {
   parkingSpaces: ParkingSpace[];
 };
 
-export const useParkingStore = defineStore("parkingStore", {
+export const useParkingStore = defineStore('parkingStore', {
   state: () =>
     ({
       parkingSpaces: [],

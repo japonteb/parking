@@ -1,31 +1,33 @@
-import { shallowMount, mount, flushPromises } from "@vue/test-utils";
-import { Quasar } from "quasar";
-import FormRegisterVehicleExitComponent from "~/components/FormRegisterVehicleExit.vue";
-import { i18n } from "../../src/modules/i18n";
-import { describe, test, expect } from "vitest";
+import { flushPromises, mount, shallowMount } from '@vue/test-utils';
+import { Quasar } from 'quasar';
+import { describe, expect, test } from 'vitest';
+
 import {
-  getInvoiceByParkingLocationService,
   getInvoiceByLicensePlateService,
+  getInvoiceByParkingLocationService,
   Invoice,
-} from "../../services/invoice-service";
+} from '../../services/invoice-service';
+import { i18n } from '../../src/modules/i18n';
+
+import FormRegisterVehicleExitComponent from '~/components/FormRegisterVehicleExit.vue';
 
 const defaultProps = {
   invoice: {
     id: 1,
     parkingSpace: {
       id: 1,
-      location: "C1",
-      type: "car",
-      state: "free",
+      location: 'C1',
+      type: 'car',
+      state: 'free',
     },
-    licensePlate: "ABC123",
+    licensePlate: 'ABC123',
     cylinderCapacity: 0,
     open: true,
   },
-  location: "C1",
+  location: 'C1',
 };
 
-vi.mock("../../services/invoice-service", () => {
+vi.mock('../../services/invoice-service', () => {
   return {
     getInvoiceByParkingLocationService: vi.fn(() =>
       Promise.resolve([defaultProps.invoice])
@@ -52,24 +54,24 @@ const wrapperFactoryMount = (props = defaultProps) =>
     },
   });
 
-describe("FormRegisterVehicleExitComponent", () => {
+describe('FormRegisterVehicleExitComponent', () => {
   beforeEach(() => {
     expect(FormRegisterVehicleExitComponent).toBeTruthy();
   });
 
-  test("should render correct title", () => {
+  test('should render correct title', () => {
     const wrapper = wrapperFactory();
-    const titleText = "Register Vehicle Exit";
+    const titleText = 'Register Vehicle Exit';
     const title = wrapper.get('[data-id="title"]');
     expect(title.text()).toContain(titleText);
   });
 
-  test("should search invoice by parking location in props", async () => {
+  test('should search invoice by parking location in props', async () => {
     const wrapper = wrapperFactoryMount();
     const buttonSearch = wrapper.get('[data-id="btn-search"]');
     expect(getInvoiceByParkingLocationService).not.toHaveBeenCalled();
     expect(getInvoiceByLicensePlateService).not.toHaveBeenCalled();
-    buttonSearch.trigger("click");
+    buttonSearch.trigger('click');
     await flushPromises();
     expect(getInvoiceByParkingLocationService).toHaveBeenCalledWith(
       defaultProps.location
@@ -77,11 +79,11 @@ describe("FormRegisterVehicleExitComponent", () => {
     expect(getInvoiceByLicensePlateService).not.toHaveBeenCalled();
   });
 
-  test("should search invoice by parking location typing", async () => {
-    const wrapper = wrapperFactoryMount({ ...defaultProps, location: "" });
+  test('should search invoice by parking location typing', async () => {
+    const wrapper = wrapperFactoryMount({ ...defaultProps, location: '' });
 
     const buttonSearch = wrapper.get('[data-id="btn-search"]');
-    const location = "C1";
+    const location = 'C1';
     const inputLocation = wrapper.get('[data-id="input-location"]');
 
     expect(getInvoiceByParkingLocationService).not.toHaveBeenCalled();
@@ -89,7 +91,7 @@ describe("FormRegisterVehicleExitComponent", () => {
 
     await inputLocation.setValue(location);
 
-    buttonSearch.trigger("click");
+    buttonSearch.trigger('click');
 
     await flushPromises();
 
@@ -97,10 +99,10 @@ describe("FormRegisterVehicleExitComponent", () => {
     expect(getInvoiceByLicensePlateService).not.toHaveBeenCalled();
   });
 
-  test("should search invoice by parking location typing", async () => {
-    const wrapper = wrapperFactoryMount({ ...defaultProps, location: "" });
+  test('should search invoice by parking location typing', async () => {
+    const wrapper = wrapperFactoryMount({ ...defaultProps, location: '' });
     const buttonSearch = wrapper.get('[data-id="btn-search"]');
-    const licensePlate = "hvn986";
+    const licensePlate = 'hvn986';
     const inputLicensePlate = wrapper.get('[data-id="input-license-plate"]');
 
     expect(getInvoiceByParkingLocationService).not.toHaveBeenCalled();
@@ -108,7 +110,7 @@ describe("FormRegisterVehicleExitComponent", () => {
 
     await inputLicensePlate.setValue(licensePlate);
 
-    buttonSearch.trigger("click");
+    buttonSearch.trigger('click');
 
     await flushPromises();
 
@@ -116,27 +118,27 @@ describe("FormRegisterVehicleExitComponent", () => {
     expect(getInvoiceByLicensePlateService).toHaveBeenCalledWith(licensePlate);
   });
 
-  test("should emit an event when the charge button is clicked", async () => {
+  test('should emit an event when the charge button is clicked', async () => {
     const wrapper = wrapperFactoryMount();
     const buttonSearch = wrapper.get('[data-id="btn-search"]');
-    buttonSearch.trigger("click");
+    buttonSearch.trigger('click');
     await flushPromises();
     expect(
       (
         wrapper.emitted(
-          "setInvoiceAndCalculateParkingPrice"
+          'setInvoiceAndCalculateParkingPrice'
         )?.[0] as Array<Invoice>
       )?.[0]
     ).toBe(defaultProps.invoice);
   });
 
-  test("should call notify function from quasar when there are not results for this search", async () => {
-    const wrapper = wrapperFactoryMount({ ...defaultProps, location: "" });
+  test('should call notify function from quasar when there are not results for this search', async () => {
+    const wrapper = wrapperFactoryMount({ ...defaultProps, location: '' });
     wrapper.vm.$q.notify = vi.fn(() => {});
 
     const buttonSearch = wrapper.get('[data-id="btn-search"]');
 
-    buttonSearch.trigger("click");
+    buttonSearch.trigger('click');
 
     await flushPromises();
 

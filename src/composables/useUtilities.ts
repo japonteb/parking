@@ -1,4 +1,4 @@
-import { useUtilitiesStore } from "../stores/utilities-store";
+import { useUtilitiesStore } from '../stores/utilities-store';
 
 const useUtilities = () => {
   const utilitiesStore = useUtilitiesStore();
