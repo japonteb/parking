@@ -70,16 +70,16 @@ utilitiesStore.fetchConstantsBusiness();
 const { getConstantValueByName } = useUtilities();
 
 const carHourValue = computed(() => {
-  return getConstantValueByName(ConstantBusiness.CAR_HOUR_VALUE);
+  return Number(getConstantValueByName(ConstantBusiness.CAR_HOUR_VALUE));
 });
 const carDayValue = computed(() => {
-  return getConstantValueByName(ConstantBusiness.CAR_DAY_VALUE);
+  return Number(getConstantValueByName(ConstantBusiness.CAR_DAY_VALUE));
 });
 const motorcycleHourValue = computed(() => {
-  return getConstantValueByName(ConstantBusiness.MOTORCYCLE_HOUR_VALUE);
+  return Number(getConstantValueByName(ConstantBusiness.MOTORCYCLE_HOUR_VALUE));
 });
 const motorcycleDayValue = computed(() => {
-  return getConstantValueByName(ConstantBusiness.MOTORCYCLE_DAY_VALUE);
+  return Number(getConstantValueByName(ConstantBusiness.MOTORCYCLE_DAY_VALUE));
 });
 </script>
 

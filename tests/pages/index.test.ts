@@ -36,5 +36,6 @@ describe('Index', () => {
 
     const wrapper = wrapperFactoryMount();
     const title = wrapper.get('[data-id="title-index"]');
+    console.log(title.html());
   });
 });

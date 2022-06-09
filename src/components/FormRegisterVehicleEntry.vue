@@ -46,11 +46,11 @@
         />
 
         <q-input
+          v-if="vehicleType === VehicleType.MOTORCYCLE_TYPE"
           v-model="cylinderCapacity"
           filled
           data-id="cylinder-capacity"
           type="number"
-          v-if="vehicleType === VehicleType.MOTORCYCLE_TYPE"
           :label="$t('message.entry.cylinderCapacity')"
           lazy-rules
           :rules="[

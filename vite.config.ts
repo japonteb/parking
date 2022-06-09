@@ -9,6 +9,7 @@ import CleanUp from 'rollup-plugin-cleanup';
 import Visualizer from 'rollup-plugin-visualizer';
 import { QuasarResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import Inspect from 'vite-plugin-inspect';
 import Pages from 'vite-plugin-pages';
